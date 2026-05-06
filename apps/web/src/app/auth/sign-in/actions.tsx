@@ -42,9 +42,11 @@ export async function signWithEmailAndPassword(_: unknown, data: FormData) {
       return { success: false, message, errors: null }
     }
 
+    console.log(err)
+
     return {
       success: false,
-      message: 'Unexpect error, try again in a few minutes.',
+      message: 'Unexpected error, try again in a few minutes.',
       errors: null,
     }
   }
