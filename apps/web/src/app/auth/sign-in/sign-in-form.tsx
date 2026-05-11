@@ -2,7 +2,6 @@
 
 import { AlertTriangle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
-import { useActionState } from 'react'
 
 import { GithubIcon } from '@/assets/github-icon'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -10,17 +9,17 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
+import { useFormState } from '@/hook/use-form-state'
 
 import { signWithEmailAndPassword } from './actions'
 
 export function SignInForm() {
-  const [{ success, message, errors }, formAction, isPending] = useActionState(
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
     signWithEmailAndPassword,
-    { success: false, message: null, errors: null },
   )
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
