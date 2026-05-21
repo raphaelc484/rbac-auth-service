@@ -1,6 +1,8 @@
 import { ChevronsUpDown, PlusCircle } from 'lucide-react'
 import Link from 'next/link'
 
+import { getOrganizations } from '@/http/get-organizations'
+
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import {
   DropdownMenu,
@@ -12,7 +14,9 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 
-export function OrganizationSwitcher() {
+export async function OrganizationSwitcher() {
+  const { organizations } = await getOrganizations()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus-visible:ring-primary flex w-41 items-center gap-2 rounded p-1 text-sm font-medium outline-none focus-visible:ring-2">
@@ -27,18 +31,29 @@ export function OrganizationSwitcher() {
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>
-          <DropdownMenuItem>
-            <Avatar className="mr-1 size-4">
-              <AvatarImage src="https://github.com/rocketseat.png" />
-              <AvatarFallback />
-            </Avatar>
-            <span className="line-clamp-1">Rocketseat</span>
-          </DropdownMenuItem>
+          {organizations.map((organization) => {
+            return (
+              <DropdownMenuItem key={organization.id}>
+                <Link
+                  href={`/org/${organization.slug}`}
+                  className="flex items-center"
+                >
+                  <Avatar className="mr-2 size-4">
+                    {organization.avatarUrl && (
+                      <AvatarImage src={organization.avatarUrl} />
+                    )}
+                    <AvatarFallback />
+                  </Avatar>
+                  <span className="line-clamp-1">{organization.name}</span>
+                </Link>
+              </DropdownMenuItem>
+            )
+          })}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link href="/create-organization" className="flex items-center">
-            <PlusCircle className="mr-2.5 size-4" />
+            <PlusCircle className="mr-2 size-4" />
             Create new
           </Link>
         </DropdownMenuItem>
