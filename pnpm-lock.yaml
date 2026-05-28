@@ -99,6 +99,9 @@ importers:
       '@base-ui/react':
         specifier: ^1.4.1
         version: 1.4.1(@types/react@19.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@saas/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
