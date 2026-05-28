@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
 
 import { cn } from '@/lib/utils'
 
@@ -17,8 +18,21 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn('dark', geist.variable)}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      // className={cn('dark', geist.variable)}
+      className={cn(geist.variable)}
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme={'dark'}
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
