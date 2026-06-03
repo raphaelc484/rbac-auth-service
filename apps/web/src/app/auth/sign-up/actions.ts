@@ -41,7 +41,7 @@ export async function signUpAction(data: FormData) {
   const { name, email, password } = result.data
 
   try {
-    signUp({
+    await signUp({
       name,
       email,
       password,
