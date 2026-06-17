@@ -1,10 +1,7 @@
-import { Header } from '@/components/header'
-
 export default async function Projects() {
   return (
     <div className="py-4">
-      <Header />
-      <main className="mx-auto w-full max-w-300">Projetos</main>
+      <h1 className="text-2xl font-bold">Projects</h1>
     </div>
   )
 }
