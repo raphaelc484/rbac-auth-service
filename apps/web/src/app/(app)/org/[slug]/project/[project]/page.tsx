@@ -1,7 +1,7 @@
 export default async function Project() {
   return (
-    <div className="py-4">
-      <main className="mx-auto w-full max-w-300">Projeto</main>
+    <div className="space-y-4">
+      <main className="text-2xl font-bold">Projeto</main>
     </div>
   )
 }
