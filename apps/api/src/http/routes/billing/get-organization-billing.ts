@@ -48,7 +48,7 @@ export async function getOrganizationBilling(app: FastifyInstance) {
 
         const userId = await request.getCurrentUserId()
 
-        const { cannot } = getUserPermissions(userId, membership)
+        const { cannot } = getUserPermissions(userId, membership.role)
 
         if (cannot('get', 'Billing')) {
           throw new UnauthorizedError(
@@ -66,7 +66,7 @@ export async function getOrganizationBilling(app: FastifyInstance) {
 
           prisma.project.count({
             where: {
-              organization: organization.id,
+              organizationId: organization.id,
             },
           }),
         ])
