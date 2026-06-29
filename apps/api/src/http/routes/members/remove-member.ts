@@ -44,7 +44,7 @@ export async function removeMember(app: FastifyInstance) {
         await prisma.member.delete({
           where: {
             id: memberId,
-            organization: organization.id,
+            organizationId: organization.id,
           },
         })
 
