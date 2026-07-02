@@ -25,6 +25,10 @@ export function useFormState(
       const state = await action(data)
 
       setFormState(state)
+
+      if (state.success) {
+        form.reset()
+      }
     })
   }
 
