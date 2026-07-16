@@ -12,7 +12,7 @@ export default async function Projects() {
 
   return (
     <div className="py-4">
-      <div className="flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Projects</h1>
         {permissions?.can('create', 'Project') && (
           <Button size="sm">
