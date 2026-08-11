@@ -1,7 +1,7 @@
 import fastifyCors from '@fastify/cors'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
-import fastifySwaggerUi from '@fastify/swagger-ui'
+// import fastifySwaggerUi from '@fastify/swagger-ui'
 import { env } from '@saas/env'
 import fastify from 'fastify'
 import {
@@ -71,9 +71,9 @@ app.register(fastifySwagger, {
   transform: jsonSchemaTransform,
 })
 
-app.register(fastifySwaggerUi, {
-  routePrefix: '/docs',
-})
+// app.register(fastifySwaggerUi, {
+//   routePrefix: '/docs',
+// })
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
