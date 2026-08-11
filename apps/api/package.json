@@ -9,7 +9,7 @@
     "db:seed": "pnpm env:load prisma db seed",
     "env:load": "dotenv -e ../../.env --",
     "build": "prisma generate && tsup",
-    "start": "node dist/http/server.js"
+    "start": "node dist/http/server.mjs"
   },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
